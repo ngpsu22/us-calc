@@ -678,6 +678,7 @@ def ubi(statefip, level, agi_tax, benefits, taxes, exclude):
         # Assign UBI
         ubi_population = (target_spmu.numper_ubi * target_spmu.spmwt).sum()
         ubi = revenue / ubi_population
+        ubi_monthly = ubi / 12
         target_spmu["total_ubi"] = ubi * target_spmu.numper_ubi
 
         # Calculate change in resources
@@ -879,14 +880,16 @@ def ubi(statefip, level, agi_tax, benefits, taxes, exclude):
 
     # Convert UBI and winners to string for title of chart
     ubi_int = int(ubi)
+    ubi_monthly_int = int(ubi_monthly)
     ubi_int = "{:,}".format(ubi_int)
     ubi_string = str(ubi_int)
+    ubi_monthly_string = str(ubi_monthly_int)
     winners_string = str(percent_winners)
     change_pp = int(change_pp)
     change_pp = "{:,}".format(change_pp)
     resources_string = str(change_pp)
 
-    ubi_line = "UBI amount: $" + ubi_string
+    ubi_line = "Monthly UBI: $" + ubi_monthly_string
     winners_line = "Percent better off: " + winners_string + "%"
     resources_line = (
         "Average change in resources per person: $" + resources_string
