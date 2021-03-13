@@ -305,7 +305,7 @@ cards = dbc.CardDeck(
                 dbc.CardBody(
                     [
                         html.Label(
-                            ["Repeal Benefits:"],
+                            ["Repeal benefits:"],
                             style={
                                 "font-weight": "bold",
                                 "text-align": "center",
@@ -325,7 +325,7 @@ cards = dbc.CardDeck(
                                     "value": "incssi",
                                 },
                                 {
-                                    "label": "  Snap (food stamps)",
+                                    "label": "  SNAP (food stamps)",
                                     "value": "spmsnap",
                                 },
                                 {
@@ -333,11 +333,11 @@ cards = dbc.CardDeck(
                                     "value": "eitcred",
                                 },
                                 {
-                                    "label": "  Unemployment",
+                                    "label": "  Unemployment benefits",
                                     "value": "incunemp",
                                 },
                                 {
-                                    "label": "  Energy Subsidy (LIHEAP)",
+                                    "label": "  Energy subsidy (LIHEAP)",
                                     "value": "spmheat",
                                 },
                             ],
@@ -470,26 +470,10 @@ app.layout = html.Div(
                         align="center",
                         no_gutters=True,
                     ),
-                    href="https://www.ubicenter.org/home",
+                    href="https://www.ubicenter.org",
+                    target="blank",
                 ),
                 dbc.NavbarToggler(id="navbar-toggler"),
-            ]
-        ),
-        # Row 1 - header
-        dbc.Row(
-            [
-                dbc.Col(
-                    html.A(
-                        [
-                            html.Img(
-                                src="https://blog.ubicenter.org/_static/ubi_center_logo_wide_blue.png",
-                                style={"height": "60%", "width": "60%"},
-                            )
-                        ],
-                        href="https://www.ubicenter.org/",
-                    ),
-                    width=2,
-                )
             ]
         ),
         html.Br(),
@@ -534,7 +518,7 @@ app.layout = html.Div(
             [
                 dbc.Col(
                     html.H1(
-                        "The results of your reform:",
+                        "Results of your reform:",
                         style={
                             "text-align": "center",
                             "color": "#1976D2",
@@ -896,7 +880,7 @@ def ubi(statefip, level, agi_tax, benefits, taxes, exclude):
     )
 
     # Create x-axis labels for each chart
-    x = ["Poverty Rate", "Poverty Gap", "Inequality (Gini)"]
+    x = ["Poverty rate", "Poverty gap", "Gini index"]
     x2 = [
         "Child",
         "Adult",
@@ -921,9 +905,9 @@ def ubi(statefip, level, agi_tax, benefits, taxes, exclude):
                     + original_poverty_gap_billions
                     + "B<br><extra></extra>"
                     "New poverty gap: $" + poverty_gap_billions + "B",
-                    "Original gini: <extra></extra>"
+                    "Original Gini index: <extra></extra>"
                     + original_gini_string
-                    + "<br>New gini: "
+                    + "<br>New Gini index: "
                     + gini_string,
                 ],
                 marker_color=BLUE,
@@ -1054,19 +1038,19 @@ def update(checklist):
 
     if "adults" in checklist:
         return [
-            {"label": "non-Citizens", "value": "non_citizens"},
+            {"label": "Non-Citizens", "value": "non_citizens"},
             {"label": "Children", "value": "children", "disabled": True},
             {"label": "Adults", "value": "adults"},
         ]
     elif "children" in checklist:
         return [
-            {"label": "non-Citizens", "value": "non_citizens"},
+            {"label": "Non-Citizens", "value": "non_citizens"},
             {"label": "Children", "value": "children"},
             {"label": "Adults", "value": "adults", "disabled": True},
         ]
     else:
         return [
-            {"label": "non-Citizens", "value": "non_citizens"},
+            {"label": "Non-Citizens", "value": "non_citizens"},
             {"label": "Children", "value": "children"},
             {"label": "Adults", "value": "adults"},
         ]
@@ -1086,7 +1070,7 @@ def update(radio):
                 "disabled": True,
             },
             {
-                "label": "  Snap (food stamps)",
+                "label": "  SNAP (food stamps)",
                 "value": "spmsnap",
                 "disabled": True,
             },
@@ -1095,9 +1079,13 @@ def update(radio):
                 "value": "eitcred",
                 "disabled": True,
             },
-            {"label": "  Unemployment", "value": "incunemp", "disabled": True},
             {
-                "label": "  Energy Subsidy (LIHEAP)",
+                "label": "  Unemployment benefits",
+                "value": "incunemp",
+                "disabled": True,
+            },
+            {
+                "label": "  Energy subsidy (LIHEAP)",
                 "value": "spmheat",
                 "disabled": True,
             },
@@ -1109,10 +1097,10 @@ def update(radio):
                 "label": "  Supplemental Security Income (SSI)",
                 "value": "incssi",
             },
-            {"label": "  Snap (food stamps)", "value": "spmsnap"},
+            {"label": "  SNAP (food stamps)", "value": "spmsnap"},
             {"label": "  Earned Income Tax Credit", "value": "eitcred"},
-            {"label": "  Unemployment", "value": "incunemp"},
-            {"label": "  Energy Subsidy (LIHEAP)", "value": "spmheat"},
+            {"label": "  Unemployment benefits", "value": "incunemp"},
+            {"label": "  Energy subsidy (LIHEAP)", "value": "spmheat"},
         ]
 
 
